@@ -10,5 +10,5 @@ public interface UserService {
 
     UserDto createUser(UserDto userDto);
 
-    Boolean updateUser(Long id, UserDto userDto);
+    Boolean updateUser(String id, UserDto userDto);
 }

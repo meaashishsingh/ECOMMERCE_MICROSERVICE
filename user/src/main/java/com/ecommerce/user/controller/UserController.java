@@ -30,7 +30,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(userDto));
     }
     @PutMapping("/api/{id}")
-    public  ResponseEntity<Boolean> updateUser(@PathVariable Long Id,@RequestBody UserDto userDto){
+    public  ResponseEntity<Boolean> updateUser(@PathVariable String Id,@RequestBody UserDto userDto){
         return  ResponseEntity.ok(userService.updateUser(Id,userDto));
     }
 

@@ -10,3 +10,13 @@ spring:
           search-location: classpath:/config
 server:
   port: 8888
+  rabbitmq:
+    host:
+      port: 5672
+      username: guest
+      password: guest
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

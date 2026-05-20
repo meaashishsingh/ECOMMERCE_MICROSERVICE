@@ -1,21 +1,21 @@
 spring:
 
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/ecommerce
-  datasource:
-#    url: jdbc:postgresql://localhost:5432/product
-#    username: AASHISH
-#    password: AASHISH
-#    driver-class-name: org.postgresql.Driver
+#  data:
+#    mongodb:
+#      uri: mongodb://localhost:27017/ecommerce
+#  datasource:
+    url: jdbc:postgresql://localhost:5432/product
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
 #
 #
-#  jpa:
-#    database: POSTGRESQL
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: update
-#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    jpa:
+     database: POSTGRESQL
+     show-sql: true
+     hibernate:
+      ddl-auto: update
+     database-platform: org.hibernate.dialect.PostgreSQLDialect
 #  h2:
 #    console:
 #      enabled: true

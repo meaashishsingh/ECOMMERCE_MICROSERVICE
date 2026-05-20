@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: order-service
+  config:
+    import: optional:configserver:http://localhost:8888
+
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/ecomdb
+#    username: AASHISH
+#    password: AASHISH
+#    driver-class-name: org.postgresql.Driver
+#
+#  jpa:
+#    database: POSTGRESQL
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+##  h2:
+##    console:
+##      enabled: true
+##  datasource:
+##    url: jdbc:h2:mem:test
+##  jpa:
+##    show-sql: true
+##    hibernate:
+##      ddl-auto: create
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#    health:
+#      show-details: always
+#  info:
+#    env:
+#      enabled: true
+#info:
+#  app:
+#    name: JobApplication
+#    description: Job app built by EmbarkX
+#    version: 1.0.0
+#
+#
+
+#
+#stripe:
+#  secret:
+#    key: ${STRIPE_SECRET_KEY}
+
+#server:
+#  port: 8083

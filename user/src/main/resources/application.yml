@@ -1,0 +1,35 @@
+
+spring:
+  application:
+      name: user-service
+  config:
+    import: optional:configserver:http://localhost:8888
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/user
+#    username: AASHISH
+#    password: AASHISH
+#    driver-class-name: org.postgresql.Driver
+#
+#  jpa:
+#    database: POSTGRESQL
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#  h2:
+#      console:
+#        enabled: true
+#  datasource:
+#      url: jdbc:h2:mem:test
+#  jpa:
+#      show-sql: true
+#      hibernate:
+#        ddl-auto: create
+#  main:
+#    allow-bean-definition-overriding: true
+#
+#server:
+#    port: 8081
+
+
+

@@ -1,0 +1,32 @@
+spring:
+
+
+  application:
+    name: ecom-micro
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecomdb
+    username: AASHISH
+    password: AASHISH
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+server:
+  port: 8082

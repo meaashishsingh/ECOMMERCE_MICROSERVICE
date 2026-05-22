@@ -4,6 +4,8 @@ import com.ecommerce.order.models.CartItem;
 import com.ecommerce.order.dtos.CartItemRequest;
 import com.ecommerce.order.services.CartService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +15,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/cart")
 @RequiredArgsConstructor
+@RefreshScope
 public class CartController {
-
+    @Value("${build.version:default}")
+    private  String buidversion;
     private final CartService cartService;
 
     @PostMapping()
@@ -40,6 +44,10 @@ public class CartController {
     public ResponseEntity<List<CartItem>> getCart(
             @RequestHeader("X-User-ID") String userId) {
         return ResponseEntity.ok(cartService.getCart(userId));
+    }
+    @GetMapping("/temp")
+    public String Meth(){
+        return buidversion;
     }
 
 }

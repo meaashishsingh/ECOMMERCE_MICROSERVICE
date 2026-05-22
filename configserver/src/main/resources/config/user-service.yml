@@ -27,11 +27,25 @@ spring:
 #      show-sql: true
 #      hibernate:
 #        ddl-auto: create
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
   main:
     allow-bean-definition-overriding: true
 
 server:
     port: 8081
+build:
+  version: user3
 
 
 

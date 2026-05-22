@@ -3,14 +3,14 @@ spring:
 #  data:
 #    mongodb:
 #      uri: mongodb://localhost:27017/ecommerce
-#  datasource:
+  datasource:
     url: jdbc:postgresql://localhost:5432/product
     username: ${DB_USER}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 #
 #
-    jpa:
+  jpa:
      database: POSTGRESQL
      show-sql: true
      hibernate:
@@ -25,6 +25,13 @@ spring:
 #    show-sql: true
 #    hibernate:
 #      ddl-auto: create
+
+  rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+
 management:
   endpoints:
     web:
@@ -36,7 +43,7 @@ management:
     env:
       enabled: true
 info:
-  app:
+    app:
     name: JobApplication
     description: Job app built by EmbarkX
     version: 1.0.0
@@ -44,3 +51,5 @@ info:
 
 server:
   port: 8082
+build:
+  version: product2

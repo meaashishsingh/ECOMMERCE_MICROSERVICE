@@ -30,10 +30,11 @@ spring:
 
 
   rabbitmq:
-    host:
-      port: 5672
-      username: guest
-      password: guest
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 management:
   endpoints:
     web:
@@ -57,3 +58,6 @@ server:
 stripe:
   secret:
     key: ${STRIPE_SECRET_KEY}
+
+build:
+  version: order1

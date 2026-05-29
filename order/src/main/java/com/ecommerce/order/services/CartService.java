@@ -1,6 +1,7 @@
 package com.ecommerce.order.services;
 
 
+import com.ecommerce.order.clients.ProductServiceClient;
 import com.ecommerce.order.dtos.ProductResponse;
 import com.ecommerce.order.dtos.UserResponse;
 import com.ecommerce.order.repositories.CartItemRepository;
@@ -19,7 +20,7 @@ import java.util.List;
 @Transactional
 public class CartService {
     private final CartItemRepository cartItemRepository;
-    //   private final ProductServiceClient productServiceClient;
+      private final ProductServiceClient productServiceClient;
     //  private final UserServiceClient userServiceClient;*/
     int attempt = 0;
 
@@ -35,6 +36,16 @@ public class CartService {
 //        UserResponse userResponse = userServiceClient.getUserDetails(userId);
 //        if (userResponse == null)
 //            return false;
+
+
+                ProductResponse productResponse = productServiceClient.getProductDetails(Long.valueOf(request.getProductId()));
+        if (productResponse == null || productResponse.getStockQuantity() < request.getQuantity())
+            return false;
+
+//        UserResponse userResponse = userServiceClient.getUserDetails(userId);
+//        if (userResponse == null)
+//            return false;
+
 
         CartItem existingCartItem = cartItemRepository.findByUserIdAndProductId(userId, request.getProductId());
         if (existingCartItem != null) {

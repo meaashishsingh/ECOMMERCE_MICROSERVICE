@@ -52,3 +52,13 @@ spring:
 
 #server:
 #  port: 8083
+logging:
+  level:
+    root: INFO
+    com.eccomerce.user: TRACE
+  file:
+    name: logs/order-service
+  logback:
+    rollingpolicy:
+      max-file-size: 5mb
+      max-history: 7

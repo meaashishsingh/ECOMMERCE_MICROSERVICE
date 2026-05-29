@@ -3,6 +3,8 @@ package com.ecommerce.user.controller;
 
 import com.ecommerce.user.dto.UserDto;
 import com.ecommerce.user.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,8 @@ import java.util.List;
 @RestController
 @RefreshScope
 public class UserController {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Value("${build.version:default}")
     private  String buidversion;
     private final UserService userService;
@@ -27,10 +31,15 @@ public class UserController {
 
     @GetMapping("/api/users")
     public ResponseEntity<List<UserDto>> getAllUsers(){
+        logger.atInfo().log("Calling API to get all users");
+        logger.atDebug().log("Calling API to get all users");
+        logger.atTrace().log("Calling API to get all users");
+        logger.atError().log("Error while calling API to get all users");
         return ResponseEntity.ok(userService.getAllUser());
     }
     @PostMapping("/api/users")
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
+
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(userDto));
     }
     @PutMapping("/api/{id}")

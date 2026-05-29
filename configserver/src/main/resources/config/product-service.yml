@@ -53,3 +53,9 @@ server:
   port: 8082
 build:
   version: product2
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true

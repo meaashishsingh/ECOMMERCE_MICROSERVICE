@@ -31,5 +31,16 @@ spring:
 #server:
 #    port: 8081
 
+# in order to print log
+logging:
+  level:
+    root: INFO
+    com.eccomerce.user: TRACE
+  file:
+    name: logs/user-service
+  logback:
+    rollingpolicy:
+      max-file-size: 5mb
+      max-history: 7
 
 

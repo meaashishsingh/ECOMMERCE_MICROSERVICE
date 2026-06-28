@@ -18,13 +18,11 @@ import java.util.List;
 @RefreshScope
 public class CartController {
     @Value("${build.version:default}")
-    private  String buidversion;
+    private String buidversion;
     private final CartService cartService;
 
     @PostMapping()
-    public ResponseEntity<String> addToCart(
-            @RequestHeader("X-User-ID") String userId,
-            @RequestBody CartItemRequest request) {
+    public ResponseEntity<String> addToCart(@RequestHeader("X-User-ID") String userId, @RequestBody CartItemRequest request) {
         if (!cartService.addToCart(userId, request)) {
             return ResponseEntity.badRequest().body("Not able to complete the request beacause product is out of stock");
         }
@@ -32,21 +30,18 @@ public class CartController {
     }
 
     @DeleteMapping("/items/{productId}")
-    public ResponseEntity<Void> removeFromCart(
-            @RequestHeader("X-User-ID") String userId,
-            @PathVariable String productId) {
+    public ResponseEntity<Void> removeFromCart(@RequestHeader("X-User-ID") String userId, @PathVariable String productId) {
         boolean deleted = cartService.deleteItemFromCart(userId, productId);
-        return deleted ? ResponseEntity.noContent().build()
-                : ResponseEntity.notFound().build();
+        return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 
     @GetMapping
-    public ResponseEntity<List<CartItem>> getCart(
-            @RequestHeader("X-User-ID") String userId) {
+    public ResponseEntity<List<CartItem>> getCart(@RequestHeader("X-User-ID") String userId) {
         return ResponseEntity.ok(cartService.getCart(userId));
     }
+
     @GetMapping("/temp")
-    public String Meth(){
+    public String Meth() {
         return buidversion;
     }
 

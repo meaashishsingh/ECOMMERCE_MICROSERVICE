@@ -20,31 +20,20 @@ public class ProductServiceClientConfig {
 //    }
 
 //     LOAD BALANCED RestClient
-    @Bean
-    @LoadBalanced
-    public RestClient.Builder loadBalancedRestClientBuilder() {
-        return RestClient.builder();
-    }
+//    @Bean
+//    @LoadBalanced
+//    public RestClient.Builder loadBalancedRestClientBuilder() {
+//        return RestClient.builder();
+//    }
 
     @Bean
-    public ProductServiceClient productServiceClient(
-            RestClient.Builder loadBalancedRestClientBuilder) {
+    public ProductServiceClient productServiceClient(RestClient.Builder loadBalancedRestClientBuilder) {
 
-        RestClient restClient = loadBalancedRestClientBuilder
-                .baseUrl("http://product-service")
-                .defaultStatusHandler(
-                        HttpStatusCode::is4xxClientError,
-                        ((request, response) -> Optional.empty())
-                )
-                .build();
+        RestClient restClient = loadBalancedRestClientBuilder.baseUrl("http://product-service").defaultStatusHandler(HttpStatusCode::is4xxClientError, ((request, response) -> Optional.empty())).build();
 
-        RestClientAdapter adapter =
-                RestClientAdapter.create(restClient);
+        RestClientAdapter adapter = RestClientAdapter.create(restClient);
 
-        HttpServiceProxyFactory factory =
-                HttpServiceProxyFactory
-                        .builderFor(adapter)
-                        .build();
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
 
         return factory.createClient(ProductServiceClient.class);
     }

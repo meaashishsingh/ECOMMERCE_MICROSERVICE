@@ -62,3 +62,7 @@ logging:
     rollingpolicy:
       max-file-size: 5mb
       max-history: 7
+management:
+  tracing:
+    sampling:
+      probability: 1.0

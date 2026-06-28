@@ -11,12 +11,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 @Data
+
 public class UserDto {
     private String id;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
+    private UserRole role= UserRole.CUSTOMER;
+    private AddressDTO address;
 
     public String getId() {
         return id;
@@ -66,15 +69,14 @@ public class UserDto {
         this.role = role;
     }
 
-    public AddressDto getAddress() {
+    public AddressDTO getAddress() {
         return address;
     }
 
-    public void setAddress(AddressDto address) {
+    public void setAddress(AddressDTO address) {
         this.address = address;
     }
 
-    private UserRole role= UserRole.CUSTOMER;
-    private AddressDto address;
+
 
 }

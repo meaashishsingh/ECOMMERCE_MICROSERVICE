@@ -1,6 +1,5 @@
 
 spring:
-
   data:
     mongodb:
      uri: ${URL}
@@ -28,11 +27,18 @@ spring:
 #      hibernate:
 #        ddl-auto: create
 
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
   rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672 }
+    username: ${RABBITMQ_USERNAME:guest }
+    password: ${RABBITMQ_PASSWORD:guest}
+    virtual_host: ${RABBITMQ_USERNAME:guest }
+    connection_timeout: 30000
 
 management:
   endpoints:
@@ -41,6 +47,10 @@ management:
         include: "*"
   main:
     allow-bean-definition-overriding: true
+
+  tracing:
+    sampling:
+      probability: 1.0
 
 server:
     port: 8081
@@ -53,4 +63,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
-
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    hostname: localhost
